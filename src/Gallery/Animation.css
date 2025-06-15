@@ -2,24 +2,28 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow-y: hidden;
-  z-index: 99;
-  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; /* Ensure it's on top */
+  pointer-events: none; /* Allow clicks through */
+
+  /* Oval-shaped radial gradient */
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 100%
+    ellipse at center,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 1) 80%
   );
+
+  /* Adjust aspect ratio for more oval shape */
+  transform: scaleX(1); /* Stretch horizontally */
 }
 
 /* Sliding Overlay Animation */
 .animation-overlay {
-  top: -110px;
+  top: -11px;
   z-index: 10;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   position: absolute;
   overflow: hidden;
   background-color: white;

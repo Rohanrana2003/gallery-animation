@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ImageCard from "./ImageCard";
 import "./Gallery.css";
 import { galleryImages } from "../utils/constantData";
@@ -6,10 +6,14 @@ import { gsap } from "gsap";
 import AnimationOverlay from "./AnimationOverlay";
 
 const Gallery = () => {
+  const [showGallery, setShowGallery] = useState(true);
   const galleryRef = useRef(null);
   const mainContentRef = useRef(null);
 
   useEffect(() => {
+    // setTimeout(() => {
+    //   setShowGallery(true);
+    // }, 1900);
     if (!galleryRef.current) return;
 
     const items = galleryRef.current.querySelectorAll(".masonry-item");
@@ -46,10 +50,10 @@ const Gallery = () => {
       y: 0,
       opacity: 1,
       scale: 1,
-      duration: 1.5,
-      ease: "power3.out",
+      duration: 1,
+      ease: "none",
       stagger: {
-        amount: 0.8,
+        amount: 0.7,
         from: "center",
       },
     });
@@ -60,18 +64,20 @@ const Gallery = () => {
       {/* White Gradient Overlay and Sliding animation */}
       <AnimationOverlay />
 
-      <div className="main-content" ref={mainContentRef}>
-        <div className="masonry-container" ref={galleryRef}>
-          {galleryImages.map((image) => (
-            <ImageCard
-              key={image.id}
-              src={image.src}
-              alt={image.alt}
-              description={image.description}
-            />
-          ))}
+      {showGallery && (
+        <div className="main-content" ref={mainContentRef}>
+          <div className="masonry-container" ref={galleryRef}>
+            {galleryImages.map((image) => (
+              <ImageCard
+                key={image.id}
+                src={image.src}
+                alt={image.alt}
+                description={image.description}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

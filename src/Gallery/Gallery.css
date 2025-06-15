@@ -1,7 +1,7 @@
 /* Gallery Navbar Styles */
 
 .page-container {
-  height: 100%;
+  /* height: 100vh; */
   width: 100%;
   padding: 210px 40px 0 40px;
   background: #ffff;
@@ -10,7 +10,6 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
   scroll-snap-stop: always;
 }
 
@@ -18,15 +17,11 @@
 .main-content {
   align-self: center;
   width: fit-content;
-  overflow-y: scroll;
   width: 1320px;
   max-height: 836px;
-  overflow-x: hidden;
   position: relative;
 }
-.main-content::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
+
 .masonry-container {
   column-count: 4;
   column-gap: 20px;
