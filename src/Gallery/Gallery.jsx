@@ -1,13 +1,15 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ImageCard from "./ImageCard";
 import "./Gallery.css";
 import { galleryImages } from "../utils/constantData";
 import { gsap } from "gsap";
+import AnimationOverlay from "./AnimationOverlay";
 
 const Gallery = () => {
   const galleryRef = useRef(null);
+  const mainContentRef = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!galleryRef.current) return;
 
     const items = galleryRef.current.querySelectorAll(".masonry-item");
@@ -30,14 +32,16 @@ const Gallery = () => {
       const quadrantY = itemCenter.y < containerCenter.y ? -1 : 1;
 
       gsap.set(item, {
+        opacity: 0,
+        delay: 2,
         x: quadrantX * 500,
         y: quadrantY * 500,
-        opacity: 0,
         scale: 0.7,
       });
     });
 
     gsap.to(items, {
+      delay: 2,
       x: 0,
       y: 0,
       opacity: 1,
@@ -53,7 +57,10 @@ const Gallery = () => {
 
   return (
     <div className="page-container">
-      <div className="main-content">
+      {/* White Gradient Overlay and Sliding animation */}
+      <AnimationOverlay />
+
+      <div className="main-content" ref={mainContentRef}>
         <div className="masonry-container" ref={galleryRef}>
           {galleryImages.map((image) => (
             <ImageCard
