@@ -36,8 +36,13 @@
 .overlay-scroll {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 20px;
-  width: 1440px;
   margin-bottom: 20px;
+}
+.move-left .overlay-scroll {
+  justify-content: flex-start;
+}
+
+.move-right .overlay-scroll {
+  justify-content: flex-end;
 }

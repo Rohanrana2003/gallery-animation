@@ -38,7 +38,7 @@ const Gallery = () => {
       gsap.set(item, {
         opacity: 0,
         delay: 2,
-        x: quadrantX * 500,
+        x: quadrantX * 400,
         y: quadrantY * 500,
         scale: 0.7,
       });
